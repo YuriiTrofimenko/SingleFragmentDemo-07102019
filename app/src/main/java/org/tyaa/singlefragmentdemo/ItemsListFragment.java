@@ -33,12 +33,8 @@ public class ItemsListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        /*Toast toast = Toast.makeText(
-                getActivity(), mItems.get(position), Toast.LENGTH_SHORT
-        );
-        toast.show();*/
         Intent startDetailsActivityIntent = new Intent(getActivity(), DetailsActivity.class);
-        startDetailsActivityIntent.putExtra(DetailsFragment.EXTRA_ITEM_TEXT, mItems.get(position));
+        startDetailsActivityIntent.putExtra(DetailsActivity.EXTRA_ITEM_TEXT, mItems.get(position));
         startActivity(startDetailsActivityIntent);
     }
 

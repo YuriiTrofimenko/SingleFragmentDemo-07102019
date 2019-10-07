@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class DetailsFragment extends Fragment {
 
-    public static final String EXTRA_ITEM_TEXT = "com.tyaa.itsteplistfragments.item_text";
     private String mItemTextString = "";
     private TextView mSecondActivityTextView;
 
@@ -25,7 +24,7 @@ public class DetailsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mItemTextString =
-                (String)getActivity().getIntent().getSerializableExtra(EXTRA_ITEM_TEXT);
+                (String)getArguments().getSerializable(DetailsActivity.EXTRA_ITEM_TEXT);
 
     }
 
@@ -37,4 +36,16 @@ public class DetailsFragment extends Fragment {
         mSecondActivityTextView.setText(mItemTextString);
         return view;
     }
+
+    // Метод класса DetailsFragment, возвращающий экземпляр DetailsFragment,
+    //которому он устанавливает аргумент:
+    //строку, полученную от активити (_itemTextString)
+    public static DetailsFragment newInstance (String _itemTextString){
+        Bundle args = new Bundle();
+        args.putSerializable(DetailsActivity.EXTRA_ITEM_TEXT, _itemTextString);
+        DetailsFragment detailsFragment = new DetailsFragment();
+        detailsFragment.setArguments(args);
+        return detailsFragment;
+    }
+
 }
